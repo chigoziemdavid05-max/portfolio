@@ -17,6 +17,7 @@
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="admin.html" class="admin-link" style="background: #667eea; padding: 8px 15px; border-radius: 5px; color: white;">⚙️ Admin</a></li>
             </ul>
         </div>
     </nav>
@@ -25,9 +26,10 @@
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Chigoziem David Okereke</h1>
-                <p class="tagline">Data Analyst | Web Developer | Excel Expert</p>
-                <p class="description">Transforming data into actionable insights and building beautiful web experiences</p>
+                <div id="profilePic" style="margin-bottom: 20px;"></div>
+                <h1 id="heroTitle">Chigoziem David Okereke</h1>
+                <p class="tagline" id="heroTagline">Data Analyst | Web Developer | Excel Expert</p>
+                <p class="description" id="heroDescription">Transforming data into actionable insights and building beautiful web experiences</p>
                 <div class="cta-buttons">
                     <a href="#projects" class="btn btn-primary">View My Work</a>
                     <a href="#contact" class="btn btn-secondary">Get In Touch</a>
@@ -40,8 +42,7 @@
     <section id="about" class="about">
         <div class="container">
             <h2>About Me</h2>
-            <p>I'm a passionate data analyst and web developer with expertise in Excel, data entry, and web development. Recently completed secondary school and eager to build a career leveraging data-driven insights and modern web technologies.</p>
-            <p>I love working with data to uncover patterns, create visualizations, and deliver actionable business intelligence. When I'm not analyzing data, I'm building responsive, user-friendly websites.</p>
+            <p id="aboutText">I'm a passionate data analyst and web developer with expertise in Excel, data entry, and web development. Recently completed secondary school and eager to build a career leveraging...</p>
         </div>
     </section>
 
@@ -49,34 +50,8 @@
     <section id="skills" class="skills">
         <div class="container">
             <h2>Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3>Data Analysis</h3>
-                    <ul>
-                        <li>Excel (Advanced)</li>
-                        <li>Data Entry & Validation</li>
-                        <li>Data Visualization</li>
-                        <li>Statistical Analysis</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <h3>Web Development</h3>
-                    <ul>
-                        <li>HTML & CSS</li>
-                        <li>JavaScript</li>
-                        <li>Responsive Design</li>
-                        <li>Web Fundamentals</li>
-                    </ul>
-                </div>
-                <div class="skill-card">
-                    <h3>Tools & Technologies</h3>
-                    <ul>
-                        <li>Microsoft Excel</li>
-                        <li>Git & GitHub</li>
-                        <li>VS Code</li>
-                        <li>Browser DevTools</li>
-                    </ul>
-                </div>
+            <div class="skills-grid" id="skillsGrid">
+                <!-- Skills will be loaded here -->
             </div>
         </div>
     </section>
@@ -85,40 +60,8 @@
     <section id="projects" class="projects">
         <div class="container">
             <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>Sales Data Analysis Dashboard</h3>
-                    <p>Advanced Excel analysis of quarterly sales data with pivot tables, charts, and automated reporting. Identified key trends and revenue opportunities.</p>
-                    <div class="project-tags">
-                        <span class="tag">Excel</span>
-                        <span class="tag">Data Analysis</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <h3>Customer Database Project</h3>
-                    <p>Organized and validated customer data entry across multiple spreadsheets. Created data cleaning procedures and quality assurance protocols.</p>
-                    <div class="project-tags">
-                        <span class="tag">Data Entry</span>
-                        <span class="tag">Excel</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <h3>Personal Portfolio Website</h3>
-                    <p>Built this responsive portfolio website to showcase skills and projects. Clean, modern design with smooth navigation and mobile optimization.</p>
-                    <div class="project-tags">
-                        <span class="tag">HTML/CSS</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Web Design</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <h3>Inventory Analysis</h3>
-                    <p>Created comprehensive inventory tracking system with Excel formulas. Implemented automated alerts for low stock levels and usage patterns.</p>
-                    <div class="project-tags">
-                        <span class="tag">Excel</span>
-                        <span class="tag">Automation</span>
-                    </div>
-                </div>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Projects will be loaded here -->
             </div>
         </div>
     </section>
@@ -129,26 +72,8 @@
             <h2>Let's Connect</h2>
             <p>Got a project in mind or just want to chat? Feel free to reach out!</p>
             
-            <div class="contact-methods">
-                <a href="mailto:chigoziemokereke05@gmail.com" class="contact-card">
-                    <h3>📧 Email</h3>
-                    <p>chigoziemokereke05@gmail.com</p>
-                </a>
-                <a href="https://github.com/chigoziemdavid05-max" class="contact-card">
-                    <h3>💻 GitHub</h3>
-                    <p>@chigoziemdavid05-max</p>
-                </a>
-            </div>
-
-            <!-- Social Links Placeholder (add your links here) -->
-            <div class="socials-placeholder">
-                <h3>Add Your Socials</h3>
-                <p>Want to add LinkedIn, Twitter, or other social media? Update the HTML or reach out!</p>
-                <!-- 
-                Examples to add later:
-                <a href="https://linkedin.com/in/yourprofile">LinkedIn</a>
-                <a href="https://twitter.com/yourhandle">Twitter</a>
-                -->
+            <div class="contact-methods" id="contactMethods">
+                <!-- Contact will be loaded here -->
             </div>
         </div>
     </section>
@@ -161,5 +86,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="portfolio-loader.js"></script>
 </body>
 </html>
