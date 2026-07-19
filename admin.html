@@ -164,7 +164,9 @@
         }
 
         input[type="text"],
-        input[type="email"] {
+        input[type="email"],
+        input[type="password"],
+        input[type="file"] {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
@@ -173,10 +175,23 @@
         }
 
         input[type="text"]:focus,
-        input[type="email"]:focus {
+        input[type="email"]:focus,
+        input[type="password"]:focus {
             outline: none;
             border-color: #667eea;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .profile-preview {
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .profile-preview img {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .grid-2 {
@@ -240,6 +255,47 @@
             display: none;
         }
 
+        .warning-msg {
+            background: #fff3cd;
+            color: #856404;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+            border: 1px solid #ffeaa7;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
         @media (max-width: 600px) {
             .grid-2 {
                 grid-template-columns: 1fr;
@@ -247,6 +303,10 @@
 
             .admin-dashboard {
                 padding: 20px;
+            }
+
+            .tabs {
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -271,61 +331,103 @@
         </div>
 
         <div class="success-msg" id="successMsg">✅ Changes saved successfully!</div>
+        <div class="warning-msg" id="warningMsg"></div>
 
-        <!-- Hero Section -->
-        <div class="section">
-            <h2>Hero Section</h2>
-            <div class="form-group">
-                <label for="heroTitle">Your Name:</label>
-                <input type="text" id="heroTitle" placeholder="Enter your full name">
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('portfolio')">📝 Portfolio</button>
+            <button class="tab-btn" onclick="switchTab('profile')">👤 Profile & Password</button>
+        </div>
+
+        <!-- Portfolio Tab -->
+        <div id="portfolio" class="tab-content active">
+            <!-- Hero Section -->
+            <div class="section">
+                <h2>Hero Section</h2>
+                <div class="form-group">
+                    <label for="heroTitle">Your Name:</label>
+                    <input type="text" id="heroTitle" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="heroTagline">Tagline:</label>
+                    <input type="text" id="heroTagline" placeholder="e.g., Data Analyst | Web Developer">
+                </div>
+                <div class="form-group">
+                    <label for="heroDescription">Description:</label>
+                    <textarea id="heroDescription" placeholder="Your main description"></textarea>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="heroTagline">Tagline:</label>
-                <input type="text" id="heroTagline" placeholder="e.g., Data Analyst | Web Developer">
+
+            <!-- About Section -->
+            <div class="section">
+                <h2>About Me</h2>
+                <div class="form-group">
+                    <label for="aboutText">About Text:</label>
+                    <textarea id="aboutText" placeholder="Tell us about yourself..."></textarea>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="heroDescription">Description:</label>
-                <textarea id="heroDescription" placeholder="Your main description"></textarea>
+
+            <!-- Skills Section -->
+            <div class="section">
+                <h2>Skills</h2>
+                <div id="skillsContainer"></div>
+                <button class="save-btn" onclick="addSkillCategory()">+ Add Skill Category</button>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="section">
+                <h2>Projects</h2>
+                <div id="projectsContainer"></div>
+                <button class="save-btn" onclick="addProject()">+ Add Project</button>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="section">
+                <h2>Contact Information</h2>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="github">GitHub:</label>
+                    <input type="text" id="github" placeholder="@yourusername">
+                </div>
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn (optional):</label>
+                    <input type="text" id="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                </div>
             </div>
         </div>
 
-        <!-- About Section -->
-        <div class="section">
-            <h2>About Me</h2>
-            <div class="form-group">
-                <label for="aboutText">About Text:</label>
-                <textarea id="aboutText" placeholder="Tell us about yourself..."></textarea>
+        <!-- Profile Tab -->
+        <div id="profile" class="tab-content">
+            <!-- Profile Picture Section -->
+            <div class="section">
+                <h2>🖼️ Profile Picture</h2>
+                <div class="form-group">
+                    <label for="profilePic">Upload Your Photo:</label>
+                    <input type="file" id="profilePic" accept="image/*">
+                    <small style="color: #666; display: block; margin-top: 5px;">Max size: 5MB. Formats: JPG, PNG, GIF</small>
+                </div>
+                <div class="profile-preview" id="profilePreview"></div>
             </div>
-        </div>
 
-        <!-- Skills Section -->
-        <div class="section">
-            <h2>Skills</h2>
-            <div id="skillsContainer"></div>
-            <button class="save-btn" onclick="addSkillCategory()">+ Add Skill Category</button>
-        </div>
-
-        <!-- Projects Section -->
-        <div class="section">
-            <h2>Projects</h2>
-            <div id="projectsContainer"></div>
-            <button class="save-btn" onclick="addProject()">+ Add Project</button>
-        </div>
-
-        <!-- Contact Section -->
-        <div class="section">
-            <h2>Contact Information</h2>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" placeholder="your.email@example.com">
-            </div>
-            <div class="form-group">
-                <label for="github">GitHub:</label>
-                <input type="text" id="github" placeholder="@yourusername">
-            </div>
-            <div class="form-group">
-                <label for="linkedin">LinkedIn (optional):</label>
-                <input type="text" id="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+            <!-- Password Section -->
+            <div class="section">
+                <h2>🔒 Change Admin Password</h2>
+                <div class="form-group">
+                    <label for="currentPassword">Current Password:</label>
+                    <input type="password" id="currentPassword" placeholder="Enter current password">
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password:</label>
+                    <input type="password" id="newPassword" placeholder="Enter new password">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm New Password:</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm new password">
+                </div>
+                <button class="save-btn" onclick="changePassword()" style="background: #f39c12;">🔑 Change Password</button>
             </div>
         </div>
 
